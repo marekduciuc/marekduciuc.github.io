@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI for Support Tickets and Integrations – Marek Duciuc</title>
+  <meta name="description" content="Case study: two Claude Code plugins for IT support tickets and Power Automate integrations, with per-ticket memory, human checkpoints, read-only production and a review loop that improves the tools.">
+  <link rel="canonical" href="https://marekduciuc.github.io/case-studies/support-automation.html">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "An AI assistant for support tickets and integrations, safe by design",
+    "url": "https://marekduciuc.github.io/case-studies/support-automation.html",
+    "inLanguage": "en",
+    "author": { "@type": "Person", "name": "Marek Duciuc", "url": "https://marekduciuc.github.io/" },
+    "about": ["AI enablement", "IT support", "Power Automate", "Claude Code", "AI guardrails"]
+  }
+  </script>
+</head>
+<body>
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Marek Duciuc</a></li>
+      <li><a href="/#case-studies">Case studies</a></li>
+      <li aria-current="page">Support and integrations</li>
+    </ol>
+  </nav>
+
+  <header class="case-head">
+    <h1>An AI assistant for support tickets and integrations, safe by design</h1>
+    <p class="deck">Two Claude Code plugins I built on a contract: one works through service desk tickets, the other builds Power Automate integrations – both remember every ticket, ask before they act and keep production out of reach.</p>
+  </header>
+
+  <dl class="facts-band" aria-label="Key facts">
+    <div><dt>2 plugins</dt><dd>a ticket workspace and a Power Automate specialist</dd></div>
+    <div><dt>Every ticket</dt><dd>has its own memory: current summary, full history, solution</dd></div>
+    <div><dt>3 checkpoints</dt><dd>a person approves the analysis, decides on failed builds and confirms the deployment</dd></div>
+    <div><dt>Read-only</dt><dd>production, for the AI; a person promotes every change</dd></div>
+    <div><dt>8 of 10</dt><dd>improvements the tool proposed for itself, accepted after review</dd></div>
+  </dl>
+
+  <div class="case-layout">
+    <aside class="case-aside">
+      <div>
+        <dl>
+          <dt>Context</dt><dd>Contract with a software company</dd>
+          <dt>My role</dt><dd>Integration Engineer, AI automation</dd>
+          <dt>Since</dt><dd>September 2026</dd>
+          <dt>Systems</dt><dd>TOPdesk, Power Automate, Zendesk, Monday.com, Jira</dd>
+          <dt>Built with</dt><dd>Claude Code plugins, hooks, dynamic workflows</dd>
+        </dl>
+        <nav aria-labelledby="toc">
+          <h2 id="toc">On this page</h2>
+          <ol>
+            <li><a href="#situation">The situation</a></li>
+            <li><a href="#built">What I built</a></li>
+            <li><a href="#safety">How it stays safe</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#learned">What I learned</a></li>
+            <li><a href="#for-you">What this means for your team</a></li>
+          </ol>
+        </nav>
+      </div>
+    </aside>
+
+    <article class="article">
+      <h2 id="situation">The situation</h2>
+      <p>
+        Since September 2026 I have been on a contract with a software company, working on service desk
+        tickets and on integrations between its business systems: the service desk, Power Automate flows,
+        Zendesk, Monday.com and Jira.
+      </p>
+      <p>
+        Support work is full of context: what the customer said last week, which flow was changed, what
+        was already tried. An AI assistant helps only if it keeps that context between sessions – and only
+        if it cannot break anything while it helps.
+      </p>
+
+      <h2 id="built">What I built</h2>
+      <h3>A ticket workspace in the terminal</h3>
+      <ul>
+        <li><strong>Memory per ticket:</strong> each ticket gets a folder with a short current summary, a full append-only history of every finding, decision and action, the proposed solution and the attachments. A journal across all tickets records what each session did.</li>
+        <li><strong>Focus mode:</strong> the assistant loads one ticket at a time, syncs it from the service desk and reports what changed since last time. Several sessions can run side by side, each holding its own ticket.</li>
+        <li><strong>Knowledge base:</strong> reusable fixes are filed by system and searched when a new ticket comes in.</li>
+        <li><strong>Private notes and new tickets:</strong> it drafts internal notes and new tickets; nothing is sent until I confirm.</li>
+      </ul>
+      <h3>A Power Automate specialist</h3>
+      <ul>
+        <li><strong>Analysis first:</strong> before anything is built, it gathers the existing tables, columns, environment variables and connection references, writes an analysis, and a critic agent challenges it. Reuse comes before anything new.</li>
+        <li><strong>Build with a review loop:</strong> up to three rounds of build, lint and review against the original request. If the third round still fails, I decide.</li>
+        <li><strong>Deployment to development only:</strong> it imports into the development environment and verifies the result. Acceptance and production are read-only for it.</li>
+        <li><strong>Documentation:</strong> each flow is documented, checked against its actual definition, scanned for secrets and proposed as a pull request.</li>
+        <li><strong>Zendesk changes:</strong> webhooks, triggers and automations change only through a guarded gateway, with a backup first and one confirmation per change.</li>
+      </ul>
+      <h3>A tool that improves itself – with my approval</h3>
+      <p>
+        A review command reads the ticket histories and the journal and proposes improvements to the tool
+        itself, each with the evidence behind it. One example: the service desk dropped line breaks in notes,
+        so a note arrived as one unreadable block. The review spotted it, proposed a formatting rule and a
+        permanent fix in the API gateway, and I approved both.
+      </p>
+
+      <h2 id="safety">How it stays safe</h2>
+      <ul>
+        <li><strong>Allow-list, not trust:</strong> the gateway to the service desk knows only the permitted actions – reads, a private note, a new ticket from a confirmed draft. It never changes an existing ticket's status or fields.</li>
+        <li><strong>Deletes only its own work:</strong> it can delete only notes it created itself, and only after an explicit yes.</li>
+        <li><strong>Hooks that block:</strong> deleting files, raw web calls and edits to protected files are blocked; histories and the journal are append-only.</li>
+        <li><strong>Secrets stay out:</strong> passwords come from the macOS Keychain and are never shown; no tokens or trigger URLs are written to ticket files.</li>
+        <li><strong>Human checkpoints:</strong> I approve the analysis, decide after failed build rounds and confirm every deployment and every write outside the service desk.</li>
+        <li><strong>Text for people reads like a person:</strong> e-mails and Teams messages are refused until they have gone through a plain-language pass.</li>
+      </ul>
+
+      <h2 id="results">Results</h2>
+      <ul>
+        <li>Both plugins in use on my own work: every ticket and every Power Automate change keeps its own memory, so work continues across sessions.</li>
+        <li>An integration change between a project board and the support desk went from analysis through a tested build in development to production, verified with a smoke test after I promoted it.</li>
+        <li>The review loop proposed 10 improvements to the tools: 8 went in, 2 I rejected.</li>
+        <li>Packaged as an installable plugin marketplace with setup guides, so colleagues can install the same tools and get updates automatically.</li>
+      </ul>
+
+      <h2 id="learned">What I learned</h2>
+      <p class="note">
+        The review loop matters as much as the first version. The tool sees its own mistakes in the ticket
+        histories – a formatting problem, a missing check – and proposes the fix with evidence. Keeping the
+        final decision with me is what makes that safe: I rejected two of the ten proposals, and they did
+        not go in.
+      </p>
+
+      <h2 id="for-you">What this means for your team</h2>
+      <ul>
+        <li>Give the AI a memory in plain files, so work continues across sessions and people can read it.</li>
+        <li>Allow-list what it may do in each system instead of trusting it to be careful.</li>
+        <li>Keep production read-only for the AI; a person promotes.</li>
+        <li>Let it propose improvements to its own process, and review every one.</li>
+      </ul>
+    </article>
+  </div>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Marek Duciuc – AI enablement for e-commerce and logistics operations. Open to new full-time contracts in EMEA and one-day AI workshops.</p>
+    <ul class="links">
+      <li><a href="/">CV</a></li>
+      <li><a href="/case-studies/doocan.html">Case study: fulfilment operations</a></li>
+      <li><a href="/case-studies/tdd-flow.html">Case study: agentic development</a></li>
+      <li><a href="mailto:marek.duciuc@gmail.com">marek.duciuc@gmail.com</a></li>
+      <li><a href="tel:+420734638943">+420 734 638 943</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
