@@ -7,6 +7,8 @@
   <meta name="description" content="Case study: putting AI into the daily operations of an e-commerce fulfilment centre – stock tracking, an operational event store, a supplier sourcing agent and team training.">
   <link rel="canonical" href="https://marekduciuc.github.io/case-studies/doocan.html">
   <link rel="stylesheet" href="/assets/site.css">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -20,110 +22,142 @@
   </script>
 </head>
 <body>
-<main>
-  <nav class="top"><a href="/">← Marek Duciuc – CV</a></nav>
-  <p class="kicker">Case study</p>
-  <h1>AI in the daily operations of an e-commerce fulfilment centre</h1>
-  <p class="meta">Doocan.com · Ostrava, Czechia · Oct 2025 – Apr 2026 · My role: Head of fulfilment operations</p>
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Marek Duciuc</a></li>
+      <li><a href="/#case-studies">Case studies</a></li>
+      <li aria-current="page">Fulfilment operations</li>
+    </ol>
+  </nav>
 
-  <section class="card glance">
-    <h2>At a glance</h2>
-    <dl class="stats">
-      <div><dt>~40</dt><dd>people in the team I led</dd></div>
-      <div><dt>99+%</dt><dd>order fulfilment precision</dd></div>
-      <div><dt>Tens of thousands</dt><dd>operational events a day in one event store</dd></div>
-      <div><dt>Daily</dt><dd>production use of the stock-tracking tool</dd></div>
-      <div><dt>~10</dt><dd>colleagues trained to work with Claude</dd></div>
-      <div><dt>CZK 500,000/yr</dt><dd>saved through carrier negotiations</dd></div>
-    </dl>
-  </section>
+  <header class="case-head">
+    <h1>AI in the daily operations of an e-commerce fulfilment centre</h1>
+    <p class="deck">How I ran a 40-person warehouse operation and built the tools the team used every day – stock tracking, an event store, a sourcing agent and training.</p>
+  </header>
 
-  <h2>The situation</h2>
-  <p>
-    I ran the day-to-day operations of an e-shop's fulfilment centre: a team of about 40 people,
-    supplier relationships, delivery KPIs, a WMS implementation and logistics support for the
-    company's expansion into Germany.
-  </p>
-  <p>
-    The operation needed three things: high order precision, replenishment from the external
-    warehouse arriving on time, and data to base decisions on. I was the manager responsible for
-    the floor – and I also built the tools.
-  </p>
+  <dl class="facts-band" aria-label="Key facts">
+    <div><dt>~40</dt><dd>people in the team I led</dd></div>
+    <div><dt>99+%</dt><dd>order fulfilment precision</dd></div>
+    <div><dt>10,000s</dt><dd>operational events a day in one event store</dd></div>
+    <div><dt>Daily</dt><dd>production use of the stock-tracking tool</dd></div>
+    <div><dt>~10</dt><dd>colleagues trained to work with Claude</dd></div>
+    <div><dt>CZK 500,000</dt><dd>saved per year through carrier negotiations</dd></div>
+  </dl>
 
-  <h2>What I built</h2>
+  <div class="case-layout">
+    <aside class="case-aside">
+      <div>
+        <dl>
+          <dt>Company</dt><dd>Doocan.com</dd>
+          <dt>Location</dt><dd>Ostrava, Czechia</dd>
+          <dt>Period</dt><dd>Oct 2025 – Apr 2026</dd>
+          <dt>My role</dt><dd>Head of Fulfilment Operations</dd>
+        </dl>
+        <nav aria-labelledby="toc">
+          <h2 id="toc">On this page</h2>
+          <ol>
+            <li><a href="#situation">The situation</a></li>
+            <li><a href="#built">What I built</a></li>
+            <li><a href="#floor">Improvements on the floor</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#differently">What I would do differently</a></li>
+            <li><a href="#for-you">What this means for your operation</a></li>
+          </ol>
+        </nav>
+      </div>
+    </aside>
 
-  <h3>1. Stock tracking that runs every day</h3>
-  <p>
-    An add-on for Google Sheets, written in Google Apps Script with Claude Code. It monitors
-    inventory levels and triggers replenishment from the external warehouse in time.
-    The team uses it every day in production.
-  </p>
+    <article class="article">
+      <h2 id="situation">The situation</h2>
+      <p>
+        I ran the day-to-day operations of an e-shop's fulfilment centre: a team of about 40 people,
+        supplier relationships, delivery KPIs, a WMS implementation and logistics support for the
+        company's expansion into Germany.
+      </p>
+      <p>
+        The operation needed three things: high order precision, replenishment from the external
+        warehouse arriving on time, and data to base decisions on. I was the manager responsible for
+        the floor – and I also built the tools.
+      </p>
 
-  <h3>2. One place for every operational event</h3>
-  <p>
-    I introduced OpenSearch as a central event store. It processes tens of thousands of events a day:
-    orders, goods movements, sales, picker walking distance, packaging consumption and external data.
-    This made operational statistics possible and gave AI-supported decisions something real to work with.
-  </p>
-  <p>
-    One example: the data showed a correlation between weather and footfall in the brick-and-mortar
-    store. Moderately poor weather increased in-store purchasing, severe weather reduced it.
-    We used this as an input for stock planning.
-  </p>
+      <h2 id="built">What I built</h2>
+      <h3>Stock tracking that runs every day</h3>
+      <p>
+        An add-on for Google Sheets, written in Google Apps Script with Claude Code. It monitors
+        inventory levels and triggers replenishment from the external warehouse in time.
+        The team uses it every day in production.
+      </p>
+      <h3>One place for every operational event</h3>
+      <p>
+        I introduced OpenSearch as a central event store. It processes tens of thousands of events a day:
+        orders, goods movements, sales, picker walking distance, packaging consumption and external data.
+        This made operational statistics possible and gave AI-supported decisions something real to work with.
+      </p>
+      <p>
+        One example: the data showed a correlation between weather and footfall in the brick-and-mortar
+        store. Moderately poor weather increased in-store purchasing, severe weather reduced it.
+        We used this as an input for stock planning.
+      </p>
+      <h3>An agent for supplier sourcing</h3>
+      <p>
+        With Claude Code I automated supplier sourcing. The agent identified qualifying vendors and
+        issued requests for quotation against my parameters – dates, technical specifications and
+        additional services such as installation.
+      </p>
+      <h3>Teaching the team</h3>
+      <p>
+        Tools only help if people use them. I trained about ten colleagues in the effective use of
+        Claude Cowork.
+      </p>
 
-  <h3>3. An agent for supplier sourcing</h3>
-  <p>
-    With Claude Code I automated supplier sourcing. The agent identified qualifying vendors and
-    issued requests for quotation against my parameters – dates, technical specifications and
-    additional services such as installation.
-  </p>
+      <h2 id="floor">Improvements on the floor</h2>
+      <p>Not everything was AI. The same approach – observe, measure, change – drove the physical work too:</p>
+      <ul>
+        <li>Goods placement re-organised with an ABC analysis based on sales volume, cutting the walking distance pickers cover per order.</li>
+        <li>The in-house picking app improved step by step: distinct audio feedback for correct and incorrect scans, so pickers notice errors without looking at the screen, plus warehouse location support.</li>
+        <li>A 2-layer warehouse with an external overflow site; most box deliveries routed to the external warehouse and brought in together with goods, freeing significant space in the main warehouse.</li>
+        <li>Packing stations rebuilt by hand into purpose-built workstations.</li>
+      </ul>
 
-  <h3>4. Teaching the team</h3>
-  <p>
-    Tools only help if people use them. I trained about ten colleagues in the effective use of
-    Claude Cowork.
-  </p>
+      <h2 id="results">Results</h2>
+      <ul>
+        <li>99+% order fulfilment precision.</li>
+        <li>Stock-tracking add-on in daily production use.</li>
+        <li>Tens of thousands of operational events a day in one searchable place.</li>
+        <li>CZK 500,000 a year saved through negotiations with shipping providers.</li>
+        <li>About ten colleagues working with AI on their own.</li>
+      </ul>
 
-  <h2>Improvements on the floor</h2>
-  <p>Not everything was AI. The same approach – observe, measure, change – drove the physical work too:</p>
-  <ul>
-    <li>Goods placement re-organised with an ABC analysis based on sales volume, cutting the walking distance pickers cover per order.</li>
-    <li>The in-house picking app improved step by step: distinct audio feedback for correct and incorrect scans, so pickers notice errors without looking at the screen, plus warehouse location support.</li>
-    <li>A 2-layer warehouse with an external overflow site; most box deliveries routed to the external warehouse and brought in together with goods, freeing significant space in the main warehouse.</li>
-    <li>Packing stations rebuilt by hand into purpose-built workstations.</li>
-  </ul>
+      <h2 id="differently">What I would do differently</h2>
+      <p class="note">
+        I would measure the impact of every automation from day one. I did not set baselines, so I can
+        show that the tools are in daily use, but not exactly how many hours they save. On a client
+        engagement, the baseline comes first – before anything gets automated.
+      </p>
 
-  <h2>Results</h2>
-  <ul>
-    <li>99+% order fulfilment precision.</li>
-    <li>Stock-tracking add-on in daily production use.</li>
-    <li>Tens of thousands of operational events a day in one searchable place.</li>
-    <li>CZK 500,000 a year saved through negotiations with shipping providers.</li>
-    <li>About ten colleagues working with AI on their own.</li>
-  </ul>
+      <h2 id="for-you">What this means for your operation</h2>
+      <ul>
+        <li>Start on the floor, not in a slide deck: find where people lose time or make errors.</li>
+        <li>Build small tools that the team uses every day, then grow them.</li>
+        <li>Put operational events in one place, so decisions rest on data.</li>
+        <li>Train people, so the tools keep working after the project ends.</li>
+      </ul>
+    </article>
+  </div>
+</div>
 
-  <h2>What I would do differently</h2>
-  <p class="note">
-    I would measure the impact of every automation from day one. I did not set baselines, so I can
-    show that the tools are in daily use, but not exactly how many hours they save. On a client
-    engagement, the baseline comes first – before anything gets automated.
-  </p>
-
-  <h2>What this means for your operation</h2>
-  <ul>
-    <li>Start on the floor, not in a slide deck: find where people lose time or make errors.</li>
-    <li>Build small tools that the team uses every day, then grow them.</li>
-    <li>Put operational events in one place, so decisions rest on data.</li>
-    <li>Train people, so the tools keep working after the project ends.</li>
-  </ul>
-
-  <footer>
-    <p>
-      Marek Duciuc – AI enablement for e-commerce and logistics operations.
-      Available for full-time contracts (EMEA, remote/hybrid) and one-day AI workshops for operations teams.
-    </p>
-    <p><a href="/">CV</a> · <a href="/case-studies/tdd-flow.html">Case study: disciplined agentic development</a> · <a href="https://www.linkedin.com/in/marekduciuc">LinkedIn</a></p>
-  </footer>
-</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Marek Duciuc – AI enablement for e-commerce and logistics operations. Available now for full-time contracts in EMEA and one-day AI workshops.</p>
+    <ul class="links">
+      <li><a href="/">CV</a></li>
+      <li><a href="/case-studies/tdd-flow.html">Case study: agentic development</a></li>
+      <li><a href="mailto:marek.duciuc@gmail.com">marek.duciuc@gmail.com</a></li>
+      <li><a href="tel:+420734638943">+420 734 638 943</a></li>
+      <li><a href="https://www.linkedin.com/in/marekduciuc">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
 </body>
 </html>

@@ -7,6 +7,8 @@
   <meta name="description" content="Case study: tdd-flow, an open-source Claude Code plugin that takes a feature from requirement to pull request with multi-agent workflows, test-driven development, human approval gates and cost limits.">
   <link rel="canonical" href="https://marekduciuc.github.io/case-studies/tdd-flow.html">
   <link rel="stylesheet" href="/assets/site.css">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,93 +23,125 @@
   </script>
 </head>
 <body>
-<main>
-  <nav class="top"><a href="/">← Marek Duciuc – CV</a></nav>
-  <p class="kicker">Case study</p>
-  <h1>Disciplined agentic development: from requirement to pull request with AI agents</h1>
-  <p class="meta">tdd-flow · open-source Claude Code plugin · Oct 2026 – today · <a href="https://github.com/marekduciuc/marek-plugins">Source on GitHub</a></p>
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Marek Duciuc</a></li>
+      <li><a href="/#case-studies">Case studies</a></li>
+      <li aria-current="page">Agentic development</li>
+    </ol>
+  </nav>
 
-  <section class="card glance">
-    <h2>At a glance</h2>
-    <dl class="stats">
-      <div><dt>4 workflows</dt><dd>requirements, implementation, docs, delivery</dd></div>
-      <div><dt>8 agents</dt><dd>specialists, each on the cheapest model that does the job</dd></div>
-      <div><dt>2 approval gates</dt><dd>a human approves the spec and the merge</dd></div>
-      <div><dt>25 tasks · 56 criteria</dt><dd>one real feature, built and merged with it</dd></div>
-    </dl>
-  </section>
+  <header class="case-head">
+    <h1>Disciplined agentic development: from requirement to pull request with AI agents</h1>
+    <p class="deck">tdd-flow, my open-source Claude Code plugin: AI agents that write tests first, stop when unsure, stay within a budget and leave the decisions to a person.</p>
+  </header>
 
-  <h2>The problem</h2>
-  <p>
-    AI agents write code fast. Without a process around them, they also skip tests, drift from the
-    requirement, push untested changes and spend tokens without limit. I wanted the speed without
-    losing control – a process that runs the same way every time and stops when it is unsure.
-  </p>
+  <dl class="facts-band" aria-label="Key facts">
+    <div><dt>4 workflows</dt><dd>requirements, implementation, docs, delivery</dd></div>
+    <div><dt>8 agents</dt><dd>specialists, each on the cheapest model that does the job</dd></div>
+    <div><dt>2 approval gates</dt><dd>a person approves the spec and the merge</dd></div>
+    <div><dt>25 tasks</dt><dd>in one real feature, built and merged with it</dd></div>
+    <div><dt>56 criteria</dt><dd>acceptance criteria in that feature, written before the code</dd></div>
+  </dl>
 
-  <h2>What I built</h2>
+  <div class="case-layout">
+    <aside class="case-aside">
+      <div>
+        <dl>
+          <dt>Project</dt><dd>tdd-flow</dd>
+          <dt>Type</dt><dd>Open-source Claude Code plugin</dd>
+          <dt>Since</dt><dd>October 2026</dd>
+          <dt>Source</dt><dd><a href="https://github.com/marekduciuc/marek-plugins">github.com/marekduciuc/marek-plugins</a></dd>
+        </dl>
+        <nav aria-labelledby="toc">
+          <h2 id="toc">On this page</h2>
+          <ol>
+            <li><a href="#problem">The problem</a></li>
+            <li><a href="#built">What I built</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#learned">What I learned</a></li>
+            <li><a href="#beyond">Why it matters outside software</a></li>
+          </ol>
+        </nav>
+      </div>
+    </aside>
 
-  <h3>A pipeline in four workflows</h3>
-  <ul>
-    <li><strong>Requirements:</strong> three analysts read the issue from different angles (behaviour, risk, minimal scope); their drafts are merged into a spec with Given/When/Then acceptance criteria and a task list, then checked by testability and completeness critics.</li>
-    <li><strong>Implementation:</strong> task by task, test-first. A test-writer agent writes the failing tests, an implementer makes them pass, a reviewer checks the task, and each task ends in its own commit.</li>
-    <li><strong>Documentation:</strong> README, ADR and changelog written from the actual diff, then fact-checked against the code.</li>
-    <li><strong>Delivery:</strong> three review lenses (spec, security, quality), two sceptics per finding, a pull request, and a CI watch with a test-first fix loop. Merge only with explicit approval.</li>
-  </ul>
+    <article class="article">
+      <h2 id="problem">The problem</h2>
+      <p>
+        AI agents write code fast. Without a process around them, they also skip tests, drift from the
+        requirement, push untested changes and spend tokens without limit. I wanted the speed without
+        losing control – a process that runs the same way every time and stops when it is unsure.
+      </p>
 
-  <h3>Guardrails, not good intentions</h3>
-  <ul>
-    <li><strong>Human approval gates:</strong> a person approves the spec before any code is written, and the merge at the end.</li>
-    <li><strong>tdd-guard hook:</strong> blocks edits to production code while a test cycle is in the red phase.</li>
-    <li><strong>push-gate hook:</strong> before the AI pushes or opens a pull request in any repository, it runs the type check, lint, tests and a secret scan; a failure blocks the push.</li>
-    <li><strong>Stop instead of guess:</strong> a coding step that fails is retried with the error output, then escalated to a stronger model; if that fails too, the run stops as blocked and waits for a person.</li>
-  </ul>
+      <h2 id="built">What I built</h2>
+      <h3>A pipeline in four workflows</h3>
+      <ul>
+        <li><strong>Requirements:</strong> three analysts read the issue from different angles (behaviour, risk, minimal scope); their drafts are merged into a spec with Given/When/Then acceptance criteria and a task list, then checked by testability and completeness critics.</li>
+        <li><strong>Implementation:</strong> task by task, test-first. A test-writer agent writes the failing tests, an implementer makes them pass, a reviewer checks the task, and each task ends in its own commit.</li>
+        <li><strong>Documentation:</strong> README, ADR and changelog written from the actual diff, then fact-checked against the code.</li>
+        <li><strong>Delivery:</strong> three review lenses (spec, security, quality), two sceptics per finding, a pull request, and a CI watch with a test-first fix loop. Merge only with explicit approval.</li>
+      </ul>
+      <h3>Guardrails, not good intentions</h3>
+      <ul>
+        <li><strong>Human approval gates:</strong> a person approves the spec before any code is written, and the merge at the end.</li>
+        <li><strong>tdd-guard hook:</strong> blocks edits to production code while a test cycle is in the red phase.</li>
+        <li><strong>push-gate hook:</strong> before the AI pushes or opens a pull request in any repository, it runs the type check, lint, tests and a secret scan; a failure blocks the push.</li>
+        <li><strong>Stop instead of guess:</strong> a coding step that fails is retried with the error output, then escalated to a stronger model; if that fails too, the run stops as blocked and waits for a person.</li>
+      </ul>
+      <h3>Cost control</h3>
+      <ul>
+        <li>Each step runs on the cheapest model that does it well – light models for mechanical steps, stronger ones for spec synthesis and the final review.</li>
+        <li>Every workflow has a cap on parallel agents and on agents per run.</li>
+        <li>Steps that need no judgement – parsing the spec, git bookkeeping, commits, CI polling – run as plain code in a small CLI instead of a reasoning agent.</li>
+      </ul>
+      <h3>Autopilot</h3>
+      <p>
+        Approved specs can be implemented in parallel: one background session per spec, each in its own git
+        worktree, each ending with a code review and a pull request.
+      </p>
 
-  <h3>Cost control</h3>
-  <ul>
-    <li>Each step runs on the cheapest model that does it well – light models for mechanical steps, stronger ones for spec synthesis and the final review.</li>
-    <li>Every workflow has a cap on parallel agents and on agents per run.</li>
-    <li>Steps that need no judgement – parsing the spec, git bookkeeping, commits, CI polling – run as plain code in a small CLI instead of a reasoning agent.</li>
-  </ul>
+      <h2 id="results">Results</h2>
+      <ul>
+        <li>Used to build the authentication core of a multi-tenant CRM I am developing (Spring Boot, private repository): 25 tasks and 56 acceptance criteria, merged as one pull request of 34 commits.</li>
+        <li>When one task got stuck on a transaction setup problem, the run stopped as blocked instead of guessing. After a manual fix it continued from the task list.</li>
+        <li>The next two features of the same project (27 and 24 tasks) are specified and queued for the autopilot.</li>
+        <li>Open source, installable as a Claude Code plugin.</li>
+      </ul>
 
-  <h3>Autopilot</h3>
-  <p>
-    Approved specs can be implemented in parallel: one background session per spec, each in its own git
-    worktree, each ending with a code review and a pull request.
-  </p>
+      <h2 id="learned">What I learned</h2>
+      <p class="note">
+        Agents for judgement, plain code for everything else. My first versions let reasoning agents do git
+        bookkeeping and wait for CI – slow, expensive and less predictable. Moving those steps into a small
+        CLI, writing tests in batches instead of one agent per behaviour, and capping agents per run made
+        the pipeline cheaper and more reliable. I would start with that split next time.
+      </p>
 
-  <h2>Results</h2>
-  <ul>
-    <li>Used to build the authentication core of a multi-tenant CRM I am developing (Spring Boot, private repository): 25 tasks and 56 acceptance criteria, merged as one pull request of 34 commits.</li>
-    <li>When one task got stuck on a transaction setup problem, the run stopped as blocked instead of guessing. After a manual fix it continued from the task list.</li>
-    <li>The next two features of the same project (27 and 24 tasks) are specified and queued for the autopilot.</li>
-    <li>Open source, installable as a Claude Code plugin.</li>
-  </ul>
+      <h2 id="beyond">Why it matters outside software</h2>
+      <p>The same principles make any AI process trustworthy – in operations, customer support or purchasing:</p>
+      <ul>
+        <li>Write down what "done" means before the AI starts.</li>
+        <li>Check the output automatically before anyone relies on it.</li>
+        <li>Keep a person at the decision points.</li>
+        <li>Let the process stop and ask, rather than guess.</li>
+        <li>Put limits on cost from day one.</li>
+      </ul>
+    </article>
+  </div>
+</div>
 
-  <h2>What I learned</h2>
-  <p class="note">
-    Agents for judgement, plain code for everything else. My first versions let reasoning agents do git
-    bookkeeping and wait for CI – slow, expensive and less predictable. Moving those steps into a small
-    CLI, writing tests in batches instead of one agent per behaviour, and capping agents per run made
-    the pipeline cheaper and more reliable. I would start with that split next time.
-  </p>
-
-  <h2>Why it matters outside software</h2>
-  <p>The same principles make any AI process trustworthy – in operations, customer support or purchasing:</p>
-  <ul>
-    <li>Write down what "done" means before the AI starts.</li>
-    <li>Check the output automatically before anyone relies on it.</li>
-    <li>Keep a person at the decision points.</li>
-    <li>Let the process stop and ask, rather than guess.</li>
-    <li>Put limits on cost from day one.</li>
-  </ul>
-
-  <footer>
-    <p>
-      Marek Duciuc – AI enablement for e-commerce and logistics operations.
-      Available for full-time contracts (EMEA, remote/hybrid) and one-day AI workshops for operations teams.
-    </p>
-    <p><a href="/">CV</a> · <a href="/case-studies/doocan.html">Case study: AI in fulfilment operations</a> · <a href="https://www.linkedin.com/in/marekduciuc">LinkedIn</a></p>
-  </footer>
-</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Marek Duciuc – AI enablement for e-commerce and logistics operations. Available now for full-time contracts in EMEA and one-day AI workshops.</p>
+    <ul class="links">
+      <li><a href="/">CV</a></li>
+      <li><a href="/case-studies/doocan.html">Case study: fulfilment operations</a></li>
+      <li><a href="mailto:marek.duciuc@gmail.com">marek.duciuc@gmail.com</a></li>
+      <li><a href="tel:+420734638943">+420 734 638 943</a></li>
+      <li><a href="https://www.linkedin.com/in/marekduciuc">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
 </body>
 </html>
