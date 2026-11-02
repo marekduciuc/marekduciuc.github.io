@@ -1,0 +1,22 @@
+# Marek Duciuc
+
+> AI enablement for e-commerce and logistics operations. Former Head of Fulfilment Operations at Doocan.com (team of ~40, Oct 2025 – Apr 2026). 10+ years in backend development, search infrastructure (Elasticsearch/OpenSearch) and technical support (Elastic, Opster, Conrad Electronic, Trask). Based in Ostrava, Czechia (CET). Available immediately for full-time contracts in EMEA (remote/hybrid) and one-day AI workshops for operations teams. Languages: Czech (native), English (C1), Polish (A2, passive).
+
+## CV
+
+- [CV (HTML)](https://marekduciuc.github.io/): full CV with experience, skills and education
+- [CV (Markdown)](https://marekduciuc.github.io/cv.md): the same CV as plain Markdown
+
+## Case studies
+
+- [AI in the daily operations of an e-commerce fulfilment centre](https://marekduciuc.github.io/case-studies/doocan.html): stock-tracking add-on in daily production use, OpenSearch event store with tens of thousands of events a day, supplier sourcing agent, ~10 colleagues trained, 99+% order fulfilment precision
+- [Disciplined agentic development: from requirement to pull request with AI agents](https://marekduciuc.github.io/case-studies/tdd-flow.html): tdd-flow Claude Code plugin – 4 workflows, 8 specialist agents, test-first implementation, human approval gates, push gate with tests and secret scan, cost caps; used to build a 25-task, 56-criteria feature of a multi-tenant CRM
+
+## Projects
+
+- [tdd-flow (marek-plugins)](https://github.com/marekduciuc/marek-plugins): Claude Code plugin – multi-agent development pipeline from spec to pull request with human approval gates
+
+## Contact
+
+- [LinkedIn](https://www.linkedin.com/in/marekduciuc)
+- [GitHub](https://github.com/marekduciuc)
