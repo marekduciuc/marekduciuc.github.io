@@ -7,13 +7,22 @@
   <meta name="description" content="Marek Duciuc puts AI into e-commerce and logistics operations. Former Head of Fulfilment Operations (team of ~40), 10+ years in backend development, search infrastructure (Elasticsearch/OpenSearch) and technical support. Open to full-time contracts in EMEA.">
   <link rel="canonical" href="https://marekduciuc.github.io/">
   <link rel="alternate" type="text/markdown" href="/cv.md" title="CV in Markdown">
-  <link rel="stylesheet" href="/assets/site.css">
-  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/icons/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Marek Duciuc">
   <meta property="og:title" content="Marek Duciuc – AI enablement for e-commerce & logistics operations">
   <meta property="og:description" content="I put AI into e-commerce and logistics operations – in daily use by the team, measured against KPIs.">
   <meta property="og:url" content="https://marekduciuc.github.io/">
+  <meta property="og:image" content="https://marekduciuc.github.io/assets/og/cv.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Marek Duciuc – AI enablement for e-commerce & logistics operations">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,6 +52,14 @@
     }
   }
   </script>
+  <script>
+    // PDF build (tools/build-assets.sh opens /?pdf): make site-relative links absolute.
+    if (location.search.indexOf("pdf") !== -1) {
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("a[href^='/']").forEach(function (a) { a.href = "https://marekduciuc.github.io" + a.getAttribute("href"); });
+      });
+    }
+  </script>
 </head>
 <body>
 <header class="masthead">
@@ -56,6 +73,7 @@
           <li><a href="tel:+420734638943">+420 734 638 943</a></li>
           <li><a href="https://www.linkedin.com/in/marekduciuc">LinkedIn</a></li>
           <li><a href="https://github.com/marekduciuc">GitHub</a></li>
+          <li><a href="/assets/Marek-Duciuc-CV.pdf" download>Download CV (PDF)</a></li>
         </ul>
       </div>
       <aside class="status" aria-label="Availability">
@@ -71,7 +89,7 @@
     <section aria-labelledby="summary" class="prose wide">
       <h2 id="summary">Summary</h2>
       <p class="lede">
-        Since September 2026 I have been on a contract as an integration engineer, building AI assistants for
+        Since 2026 I have been on a contract as an integration engineer, building AI assistants for
         service desk tickets and Power Automate integrations – with human checkpoints and production out of reach.
         Before that I ran the fulfilment centre of an e-shop with a team of about 40 people and built the AI tools
         the operation used every day: stock tracking, a central event store and a supplier sourcing agent.
@@ -80,6 +98,33 @@
         Before that: 10+ years in backend development, search infrastructure and technical support –
         Elastic, Opster, Conrad Electronic, Trask. I enjoy making systems measurable before optimising them.
       </p>
+    </section>
+
+    <section aria-labelledby="help">
+      <h2 id="help">How I can help</h2>
+      <div class="offers">
+        <article class="offer-block">
+          <h3>Full-time contract</h3>
+          <p class="offer-lead">AI enablement in your operations, 3–12 months, remote or hybrid in EMEA.</p>
+          <ul>
+            <li>Find where your team loses time or makes errors, and measure it before anything is automated</li>
+            <li>Build tools the team uses every day: stock and replenishment, supplier enquiries, support tickets, integrations between your systems</li>
+            <li>Build in the guardrails: a person approves the decisions, production stays out of the AI's reach</li>
+            <li>Train the people, so the tools keep working after I leave</li>
+          </ul>
+        </article>
+        <article class="offer-block">
+          <h3>One-day workshop</h3>
+          <p class="offer-lead">Practical AI for operations teams.</p>
+          <ul>
+            <li>Where AI helps in day-to-day operations and where it does not</li>
+            <li>Hands-on work with Claude on tasks from your team's own work</li>
+            <li>Guardrails: one source of truth, checking the output, a person signs off</li>
+            <li>Together we pick the first tasks worth automating</li>
+          </ul>
+          <p class="offer-out">Your team leaves having tried it hands-on, with a shortlist of first steps.</p>
+        </article>
+      </div>
     </section>
 
     <section aria-labelledby="case-studies">
@@ -100,7 +145,7 @@
           <ul class="facts">
             <li>4 workflows, 8 specialist agents</li>
             <li>A person approves the spec and the merge</li>
-            <li>Used to build a 25-task feature of a real project</li>
+            <li>Builds multi-task features against acceptance criteria</li>
           </ul>
         </article>
         <article class="teaser">
@@ -113,13 +158,14 @@
           </ul>
         </article>
       </div>
+      <p class="more"><a href="/case-studies/">All case studies</a></p>
     </section>
 
     <section aria-labelledby="experience">
       <h2 id="experience">Experience</h2>
       <ol class="timeline">
         <li class="job featured">
-          <div class="job-when"><span class="years">2026–</span><span class="months">Sep 2026 – present</span></div>
+          <div class="job-when"><span class="years">2026–</span><span class="months">2026 – present</span></div>
           <div class="job-body">
             <h3>Integration Engineer, AI automation</h3>
             <p class="org">Software company (name not disclosed), contract</p>
@@ -245,7 +291,10 @@
             <p>Web application for vehicle technical inspection for the Finnish government (Java, Spring, JPA, Hibernate, AngularJS, MySQL). Led the adoption of Agile principles on the project.</p>
           </div>
         </li>
-
+      </ol>
+      <details class="earlier">
+        <summary>Earlier experience, 2007 – 2017</summary>
+        <ol class="timeline">
         <li class="job">
           <div class="job-when"><span class="years">2016–17</span><span class="months">Jan 2016 – Aug 2017</span></div>
           <div class="job-body">
@@ -277,7 +326,8 @@
             <p>Including a Vendavo implementation at Philips in Eindhoven, Netherlands, with SAP data integration.</p>
           </div>
         </li>
-      </ol>
+        </ol>
+      </details>
     </section>
   </main>
 

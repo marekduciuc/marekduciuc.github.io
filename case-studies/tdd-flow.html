@@ -6,6 +6,19 @@
   <title>Disciplined Agentic Development – Marek Duciuc</title>
   <meta name="description" content="Case study: tdd-flow, an open-source Claude Code plugin that takes a feature from requirement to pull request with multi-agent workflows, test-driven development, human approval gates and cost limits.">
   <link rel="canonical" href="https://marekduciuc.github.io/case-studies/tdd-flow.html">
+  <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/icons/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Marek Duciuc">
+  <meta property="og:title" content="Disciplined agentic development: from requirement to pull request with AI agents">
+  <meta property="og:description" content="tdd-flow, my open-source Claude Code plugin: AI agents that write tests first, stop when unsure and leave the decisions to a person.">
+  <meta property="og:url" content="https://marekduciuc.github.io/case-studies/tdd-flow.html">
+  <meta property="og:image" content="https://marekduciuc.github.io/assets/og/tdd-flow.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Disciplined agentic development: from requirement to pull request with AI agents">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -27,7 +40,7 @@
   <nav class="crumbs" aria-label="Breadcrumb">
     <ol>
       <li><a href="/">Marek Duciuc</a></li>
-      <li><a href="/#case-studies">Case studies</a></li>
+      <li><a href="/case-studies/">Case studies</a></li>
       <li aria-current="page">Agentic development</li>
     </ol>
   </nav>
@@ -41,8 +54,8 @@
     <div><dt>4 workflows</dt><dd>requirements, implementation, docs, delivery</dd></div>
     <div><dt>8 agents</dt><dd>specialists, each on the cheapest model that does the job</dd></div>
     <div><dt>2 approval gates</dt><dd>a person approves the spec and the merge</dd></div>
-    <div><dt>25 tasks</dt><dd>in one real feature, built and merged with it</dd></div>
-    <div><dt>56 criteria</dt><dd>acceptance criteria in that feature, written before the code</dd></div>
+    <div><dt>Multi-task features</dt><dd>built task by task, each with its own tests, review and commit</dd></div>
+    <div><dt>Acceptance criteria</dt><dd>every task is implemented and reviewed against the approved spec</dd></div>
   </dl>
 
   <div class="case-layout">
@@ -104,9 +117,8 @@
 
       <h2 id="results">Results</h2>
       <ul>
-        <li>Used to build the authentication core of a multi-tenant CRM I am developing (Spring Boot, private repository): 25 tasks and 56 acceptance criteria, merged as one pull request of 34 commits.</li>
+        <li>I use it to implement all features of a multi-tenant CRM, back end and front end. The authentication core alone took dozens of tasks and acceptance criteria, merged as one pull request with a commit per task.</li>
         <li>When one task got stuck on a transaction setup problem, the run stopped as blocked instead of guessing. After a manual fix it continued from the task list.</li>
-        <li>The next two features of the same project (27 and 24 tasks) are specified and queued for the autopilot.</li>
         <li>Open source, installable as a Claude Code plugin.</li>
       </ul>
 
@@ -136,8 +148,7 @@
     <p>Marek Duciuc – AI enablement for e-commerce and logistics operations. Open to new full-time contracts in EMEA and one-day AI workshops.</p>
     <ul class="links">
       <li><a href="/">CV</a></li>
-      <li><a href="/case-studies/doocan.html">Case study: fulfilment operations</a></li>
-      <li><a href="/case-studies/support-automation.html">Case study: support and integrations</a></li>
+      <li><a href="/case-studies/">All case studies</a></li>
       <li><a href="mailto:marek.duciuc@gmail.com">marek.duciuc@gmail.com</a></li>
       <li><a href="tel:+420734638943">+420 734 638 943</a></li>
       <li><a href="https://www.linkedin.com/in/marekduciuc">LinkedIn</a></li>

@@ -1,0 +1,47 @@
+<!doctype html>
+<!-- Template for social preview images (1200x630) and the icon (512x512). Rendered by tools/build-assets.sh. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Card template</title>
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    :root { color-scheme: light; --paper: #F2F4F3; --ink: #14213D; --muted: #56627A; --signal: #1D7A58; }
+    html, body { margin: 0; background: var(--paper); color: var(--ink); }
+    .card { width: 1200px; height: 630px; box-sizing: border-box; padding: 64px 76px 56px; display: flex; flex-direction: column; border-top: 14px solid var(--signal); }
+    .kicker { font: 600 28px/1 var(--sans); color: var(--muted); margin: 0 0 28px; }
+    .title { font-family: var(--sans); font-weight: 800; letter-spacing: -0.015em; margin: 0; }
+    .cv .title { font-size: 148px; font-stretch: 118%; line-height: .92; letter-spacing: -0.02em; }
+    .case .title { font-size: 70px; font-stretch: 104%; line-height: 1.04; max-width: 1000px; }
+    .sub { font: 400 40px/1.3 var(--serif); margin: 36px 0 0; max-width: 900px; }
+    .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: baseline; font: 600 28px/1 var(--sans); }
+    .foot .url { color: var(--muted); font-weight: 500; }
+    .icon { width: 512px; height: 512px; background: var(--ink); display: grid; place-items: center; position: relative; }
+    .icon span { font: 800 250px/1 var(--sans); font-stretch: 112%; color: #F2F4F3; letter-spacing: -0.03em; transform: translateY(-14px); }
+    .icon::after { content: ""; position: absolute; left: 96px; right: 96px; bottom: 92px; height: 26px; background: #5CC79A; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    var q = new URLSearchParams(location.search);
+    var kind = q.get("kind") || "cv";
+    var root = document.getElementById("root");
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+    if (kind === "icon") {
+      var i = el("div", "icon"); i.appendChild(el("span", "", "MD")); root.appendChild(i);
+    } else {
+      var c = el("div", "card " + kind);
+      if (q.get("kicker")) c.appendChild(el("p", "kicker", q.get("kicker")));
+      c.appendChild(el("h1", "title", q.get("title") || ""));
+      if (q.get("sub")) c.appendChild(el("p", "sub", q.get("sub")));
+      var f = el("div", "foot");
+      f.appendChild(el("span", "", kind === "cv" ? "Open to new contracts" : "Marek Duciuc"));
+      f.appendChild(el("span", "url", "marekduciuc.github.io"));
+      c.appendChild(f);
+      root.appendChild(c);
+    }
+  </script>
+</body>
+</html>
