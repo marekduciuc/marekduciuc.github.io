@@ -2,6 +2,8 @@
 
 **Headline:** AI enablement for e-commerce & logistics operations
 **Location:** Ostrava, Czechia (Central European Timezone)
+**Email:** marek.duciuc@gmail.com
+**Phone:** +420 734 638 943
 **LinkedIn:** https://www.linkedin.com/in/marekduciuc
 **GitHub:** https://github.com/marekduciuc
 **Website:** https://marekduciuc.github.io/
