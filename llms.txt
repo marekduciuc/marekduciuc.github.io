@@ -1,6 +1,6 @@
 # Marek Duciuc
 
-> AI enablement for e-commerce and logistics operations. Since Sep 2026 on a contract as Integration Engineer, AI automation (software company, name not disclosed), building AI assistants for service desk tickets and Power Automate integrations. Former Head of Fulfilment Operations at Doocan.com (team of ~40, Oct 2025 – Apr 2026). 10+ years in backend development, search infrastructure (Elasticsearch/OpenSearch) and technical support (Elastic, Opster, Conrad Electronic, Trask). Based in Ostrava, Czechia (CET). Open to new full-time contracts in EMEA (remote/hybrid) and one-day AI workshops for operations teams. Languages: Czech (native), English (C1), Polish (A2, passive).
+> AI enablement for e-commerce and logistics operations. Since 2026 on a contract as Integration Engineer, AI automation (software company, name not disclosed), building AI assistants for service desk tickets and Power Automate integrations. Former Head of Fulfilment Operations at Doocan.com (team of ~40, Oct 2025 – Apr 2026). 10+ years in backend development, search infrastructure (Elasticsearch/OpenSearch) and technical support (Elastic, Opster, Conrad Electronic, Trask). Based in Ostrava, Czechia (CET). Open to new full-time contracts in EMEA (remote/hybrid) and one-day AI workshops for operations teams. Languages: Czech (native), English (C1), Polish (A2, passive).
 
 ## CV
 
@@ -9,10 +9,11 @@
 
 ## Case studies
 
+- [All case studies](https://marekduciuc.github.io/case-studies/): the complete list
 - [AI in the daily operations of an e-commerce fulfilment centre](https://marekduciuc.github.io/case-studies/doocan.html): stock-tracking add-on in daily production use, OpenSearch event store with tens of thousands of events a day, supplier sourcing agent, ~10 colleagues trained, 99+% order fulfilment precision
-- [Disciplined agentic development: from requirement to pull request with AI agents](https://marekduciuc.github.io/case-studies/tdd-flow.html): tdd-flow Claude Code plugin – 4 workflows, 8 specialist agents, test-first implementation, human approval gates, push gate with tests and secret scan, cost caps; used to build a 25-task, 56-criteria feature of a multi-tenant CRM
+- [Disciplined agentic development: from requirement to pull request with AI agents](https://marekduciuc.github.io/case-studies/tdd-flow.html): tdd-flow Claude Code plugin – 4 workflows, 8 specialist agents, test-first implementation, human approval gates, push gate with tests and secret scan, cost caps; builds multi-task features task by task against the acceptance criteria of an approved spec
 
-- [An AI assistant for support tickets and integrations, safe by design](https://marekduciuc.github.io/case-studies/support-automation.html): two Claude Code plugins built on a contract with a software company (since Sep 2026) – service desk ticket workspace with per-ticket memory and an allow-listed API gateway, Power Automate specialist with analysis, critic, review loop and dev-only deployment, three human checkpoints, read-only production, self-proposed improvements reviewed by a person (8 of 10 accepted)
+- [An AI assistant for support tickets and integrations, safe by design](https://marekduciuc.github.io/case-studies/support-automation.html): two Claude Code plugins built on a contract with a software company (since 2026) – service desk ticket workspace with per-ticket memory and an allow-listed API gateway, Power Automate specialist with analysis, critic, review loop and dev-only deployment, three human checkpoints, read-only production, self-proposed improvements reviewed by a person (8 of 10 accepted)
 
 ## Projects
 

@@ -25,7 +25,7 @@ Java and Elasticsearch/OpenSearch engineer with 10+ years in backend development
 ### Software company (name not disclosed)
 
 **Integration Engineer, AI automation**
-Sep 2026 – present · contract
+2026 – present · contract
 
 Service desk tickets and integrations between business systems: Power Automate, Zendesk, Monday.com and Jira.
 
