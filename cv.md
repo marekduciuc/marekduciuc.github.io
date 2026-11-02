@@ -8,18 +8,31 @@
 **GitHub:** https://github.com/marekduciuc
 **Website:** https://marekduciuc.github.io/
 
-**Availability:** immediately, for full-time contracts (EMEA, remote/hybrid) and one-day AI workshops for operations teams.
+**Availability:** open to new full-time contracts (EMEA, remote/hybrid) and one-day AI workshops for operations teams.
 
 **Case studies:**
 
 - [AI in the daily operations of an e-commerce fulfilment centre](https://marekduciuc.github.io/case-studies/doocan.html)
 - [Disciplined agentic development: from requirement to pull request with AI agents](https://marekduciuc.github.io/case-studies/tdd-flow.html)
+- [An AI assistant for support tickets and integrations, safe by design](https://marekduciuc.github.io/case-studies/support-automation.html)
 
 ## Professional Summary
 
 Java and Elasticsearch/OpenSearch engineer with 10+ years in backend development, search infrastructure and technical support, plus recent hands-on leadership of a 40-person operation. I build practical automation — most recently agentic workflows with Claude Code — and I enjoy making systems measurable before optimising them.
 
 ## Experience
+
+### Software company (name not disclosed)
+
+**Integration Engineer, AI automation**
+Sep 2026 – present · contract
+
+Service desk tickets and integrations between business systems: Power Automate, Zendesk, Monday.com and Jira.
+
+- Built a Claude Code ticket workspace: memory per ticket, focus mode, knowledge base, and an allow-listed gateway to the service desk API that can only read, add private notes and create confirmed tickets
+- Built a Power Automate specialist: analysis challenged by a critic agent, build with a review loop against the request, deployment to the development environment only, documentation checked against each flow
+- Human checkpoints for analysis, failed builds and every deployment; production stays read-only for the AI
+- A review loop in which the tools propose improvements to themselves; 8 of 10 accepted after review
 
 ### Doocan.com — Ostrava, Czechia
 
