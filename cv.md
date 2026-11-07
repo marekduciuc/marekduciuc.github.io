@@ -16,6 +16,7 @@
 - [Disciplined agentic development: from requirement to pull request with AI agents](https://marekduciuc.github.io/case-studies/tdd-flow.html)
 - [An AI assistant for support tickets and integrations, safe by design](https://marekduciuc.github.io/case-studies/support-automation.html)
 - [Elasticsearch in production: fast, stable and trusted with a bank's logs](https://marekduciuc.github.io/case-studies/elasticsearch.html)
+- [From a paper manual to a Czech document: AI only where it is needed](https://marekduciuc.github.io/case-studies/manual-translator.html)
 
 ## Professional Summary
 

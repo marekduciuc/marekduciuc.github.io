@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manual Translator – Marek Duciuc</title>
+  <meta name="description" content="Case study: turning photos of paper manuals into editable Czech documents – all preprocessing local, AI used only to read and translate each page.">
+  <link rel="canonical" href="https://marekduciuc.github.io/case-studies/manual-translator.html">
+  <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/icons/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Marek Duciuc">
+  <meta property="og:title" content="From a paper manual to a Czech document: AI only where it is needed">
+  <meta property="og:description" content="Photos of a paper manual in, an editable Czech document out – with every step that does not need AI done locally.">
+  <meta property="og:url" content="https://marekduciuc.github.io/case-studies/manual-translator.html">
+  <meta property="og:image" content="https://marekduciuc.github.io/assets/og/manual-translator.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="From a paper manual to a Czech document: AI only where it is needed">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "From a paper manual to a Czech document: AI only where it is needed",
+    "url": "https://marekduciuc.github.io/case-studies/manual-translator.html",
+    "inLanguage": "en",
+    "author": { "@type": "Person", "name": "Marek Duciuc", "url": "https://marekduciuc.github.io/" },
+    "about": ["AI translation", "OCR", "Document processing", "E-commerce", "Claude"]
+  }
+  </script>
+</head>
+<body>
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Marek Duciuc</a></li>
+      <li><a href="/case-studies/">Case studies</a></li>
+      <li aria-current="page">Manual translator</li>
+    </ol>
+  </nav>
+
+  <header class="case-head">
+    <h1>From a paper manual to a Czech document: AI only where it is needed</h1>
+    <p class="deck">A tool I built for an e-commerce shop: photos of a paper manual in English or Polish go in, an editable Czech document comes out. Every step that does not need AI runs locally; the AI only reads and translates the page.</p>
+  </header>
+
+  <dl class="facts-band" aria-label="Key facts">
+    <div><dt>Paper → DOCX</dt><dd>an editable Czech manual from photos or scans of a paper original</dd></div>
+    <div><dt>Local</dt><dd>rotation, straightening, page splitting, sorting, cropping, language detection and OCR</dd></div>
+    <div><dt>1 AI step</dt><dd>reading and translating each page</dd></div>
+    <div><dt>Seconds</dt><dd>per page for local OCR on an ordinary CPU</dd></div>
+    <div><dt>Skipped</dt><dd>pages in languages you did not select never reach the AI</dd></div>
+  </dl>
+
+  <div class="case-layout">
+    <aside class="case-aside">
+      <div>
+        <dl>
+          <dt>Client</dt><dd>E-commerce shop (name not disclosed)</dd>
+          <dt>Period</dt><dd>2026</dd>
+          <dt>My role</dt><dd>Designed and built the tool</dd>
+          <dt>Built with</dt><dd>Java, Spring Boot, Tesseract OCR, Claude, Apache POI</dd>
+        </dl>
+        <nav aria-labelledby="toc">
+          <h2 id="toc">On this page</h2>
+          <ol>
+            <li><a href="#situation">The situation</a></li>
+            <li><a href="#what">What the tool does</a></li>
+            <li><a href="#messy">Messy input is fine</a></li>
+            <li><a href="#ai">AI only where it is needed</a></li>
+            <li><a href="#evolved">How it evolved</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#differently">What I would do differently</a></li>
+            <li><a href="#for-you">What this means for your team</a></li>
+          </ol>
+        </nav>
+      </div>
+    </aside>
+
+    <article class="article">
+      <h2 id="situation">The situation</h2>
+      <p>
+        The shop has to give its customers Czech manuals. Suppliers often do not send an electronic
+        version at all – only the original paper manual, in English or Polish. Until now, someone
+        retyped and translated these manuals by hand.
+      </p>
+
+      <h2 id="what">What the tool does</h2>
+      <ul>
+        <li><strong>Input:</strong> photos or scans of the paper manual – PDF, JPG, PNG or TIFF.</li>
+        <li><strong>Output:</strong> an editable Czech document, exported to DOCX or PDF, with headings, lists and tables.</li>
+        <li><strong>Editing:</strong> the translation opens in an editor inside the tool. Your own photos and pictures can be added there, or later in Word.</li>
+      </ul>
+      <p>
+        The original illustrations are not copied over; the user adds the pictures they want to keep.
+      </p>
+
+      <h2 id="messy">Messy input is fine</h2>
+      <p>The pages do not have to be scanned neatly:</p>
+      <ul>
+        <li><strong>Sideways or upside down:</strong> the orientation is detected and corrected.</li>
+        <li><strong>Slightly crooked:</strong> a photo taken at a small angle is straightened.</li>
+        <li><strong>Two pages in one photo:</strong> booklet spreads are detected and split.</li>
+        <li><strong>Out of order:</strong> pages are sorted by their page numbers; anything left can be moved up or down by hand.</li>
+        <li><strong>Noise and margins:</strong> noisy scans are cleaned and empty margins cropped.</li>
+      </ul>
+
+      <h2 id="ai">AI only where it is needed</h2>
+      <p>
+        Every call to an AI model costs time and money and adds a step that can go wrong. So each step
+        asks one question: does this need AI? Most do not.
+      </p>
+      <ul>
+        <li><strong>Local:</strong> noise removal, orientation, straightening, splitting spreads, sorting, cropping, language detection and OCR.</li>
+        <li><strong>AI:</strong> for each page, Claude gets the cleaned page image and the text from the local OCR. It corrects OCR mistakes against the image and translates the page into Czech.</li>
+        <li><strong>Language first:</strong> the language of each page is detected locally. Pages in languages the user did not select are never sent to the AI.</li>
+        <li><strong>OCR text as a head start:</strong> giving the model the OCR text, instead of asking it to write everything from the image, cuts the output tokens by an order of magnitude.</li>
+        <li><strong>The right weight of tool:</strong> local OCR takes a few seconds per page on an ordinary CPU. A heavier GPU-based OCR service would have taken minutes per page for the same job.</li>
+      </ul>
+      <h3>Guardrails</h3>
+      <ul>
+        <li>Retries with back-off when the AI service is busy or fails.</li>
+        <li>A cache of translated pages, so nothing is translated twice.</li>
+        <li>A cap on the output size of each call.</li>
+        <li>File type checks and upload limits per session.</li>
+        <li>An automated test suite for the pipeline and the API.</li>
+      </ul>
+
+      <h2 id="evolved">How it evolved</h2>
+      <p>
+        The first version was a script that sent everything to the AI. It worked, but it was slow and
+        paid for steps that ordinary code does better. Step by step the preprocessing moved into local
+        code, and a user interface came on top, so the shop's staff can upload, check and edit the result
+        themselves.
+      </p>
+
+      <h2 id="results">Results</h2>
+      <ul>
+        <li>Paper manuals in English or Polish become editable Czech documents without retyping.</li>
+        <li>Phone photos are enough: rotated, slightly crooked or shuffled pages are handled.</li>
+        <li>The AI does one job per page – read and translate – and nothing else.</li>
+        <li>The result can be finished in the tool or in Word, with the shop's own pictures.</li>
+      </ul>
+
+      <h2 id="differently">What I would do differently</h2>
+      <p class="note">
+        I would start where I ended: AI only for the translation, everything else local from day one.
+        Moving steps out of the AI later meant rebuilding parts of the pipeline that a clear split at the
+        start would have avoided.
+      </p>
+
+      <h2 id="for-you">What this means for your team</h2>
+      <ul>
+        <li>Ask of every step whether it needs AI. Most preprocessing does not.</li>
+        <li>Give the model a head start – such as OCR text – instead of making it do everything.</li>
+        <li>Filter before you send: work that should not be translated should never reach the model.</li>
+        <li>Let people finish the result in tools they already use.</li>
+      </ul>
+    </article>
+  </div>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Marek Duciuc – AI enablement for e-commerce and logistics operations. Open to new full-time contracts in EMEA and one-day AI workshops.</p>
+    <ul class="links">
+      <li><a href="/">CV</a></li>
+      <li><a href="/case-studies/">All case studies</a></li>
+      <li><a href="mailto:marek.duciuc@gmail.com">marek.duciuc@gmail.com</a></li>
+      <li><a href="tel:+420734638943">+420 734 638 943</a></li>
+      <li><a href="https://www.linkedin.com/in/marekduciuc">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

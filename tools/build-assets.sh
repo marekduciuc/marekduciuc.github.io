@@ -38,6 +38,7 @@ card doocan case "Case study" "AI in the daily operations of an e-commerce fulfi
 card tdd-flow case "Case study" "Disciplined agentic development: from requirement to pull request with AI agents"
 card support-automation case "Case study" "An AI assistant for support tickets and integrations, safe by design"
 card elasticsearch case "Case study" "Elasticsearch in production: fast, stable and trusted with a bank's logs"
+card manual-translator case "Case study" "From a paper manual to a Czech document: AI only where it is needed"
 
 shot assets/icons/icon-512.png 512 512 "kind=icon"
 sips -z 192 192 assets/icons/icon-512.png --out assets/icons/icon-192.png >/dev/null
