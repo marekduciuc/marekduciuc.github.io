@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elasticsearch in Production – Marek Duciuc</title>
+  <meta name="description" content="Case study: making Elasticsearch fast, stable and cheaper to run – performance tuning, cluster consulting, central log management for a bank and three years of production support at Elastic.">
+  <link rel="canonical" href="https://marekduciuc.github.io/case-studies/elasticsearch.html">
+  <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/icons/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Marek Duciuc">
+  <meta property="og:title" content="Elasticsearch in production: fast, stable and trusted with a bank's logs">
+  <meta property="og:description" content="Performance tuning, cluster consulting, central log management for a bank and three years of production support at Elastic.">
+  <meta property="og:url" content="https://marekduciuc.github.io/case-studies/elasticsearch.html">
+  <meta property="og:image" content="https://marekduciuc.github.io/assets/og/elasticsearch.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Elasticsearch in production: fast, stable and trusted with a bank's logs">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Elasticsearch in production: fast, stable and trusted with a bank's logs",
+    "url": "https://marekduciuc.github.io/case-studies/elasticsearch.html",
+    "inLanguage": "en",
+    "author": { "@type": "Person", "name": "Marek Duciuc", "url": "https://marekduciuc.github.io/" },
+    "about": ["Elasticsearch", "Performance tuning", "Log management", "Kibana", "Technical support"]
+  }
+  </script>
+</head>
+<body>
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Marek Duciuc</a></li>
+      <li><a href="/case-studies/">Case studies</a></li>
+      <li aria-current="page">Elasticsearch</li>
+    </ol>
+  </nav>
+
+  <header class="case-head">
+    <h1>Elasticsearch in production: fast, stable and trusted with a bank's logs</h1>
+    <p class="deck">Search and log platforms I made faster, cheaper to run and safe to hand over – from performance tuning and cluster consulting to central log management for a bank, backed by three years of production support at Elastic.</p>
+  </header>
+
+  <dl class="facts-band" aria-label="Key facts">
+    <div><dt>20 → ~1,800</dt><dd>indexing operations per second after moving to bulk indexing</dd></div>
+    <div><dt>3 days → hours</dt><dd>for a full reindex</dd></div>
+    <div><dt>−20%</dt><dd>search latency</dd></div>
+    <div><dt>GBs a day</dt><dd>of logs in a bank's central log management</dd></div>
+    <div><dt>3 years</dt><dd>of production support at Elastic</dd></div>
+  </dl>
+
+  <div class="case-layout">
+    <aside class="case-aside">
+      <div>
+        <dl>
+          <dt>Context</dt><dd>Elastic support, Opster consulting and Elasticsearch contracts</dd>
+          <dt>Period</dt><dd>2018 – 2022</dd>
+          <dt>My roles</dt><dd>Support Engineer II, Senior Support Engineer, Elasticsearch engineer</dd>
+          <dt>Stack</dt><dd>Elasticsearch, Logstash, Beats, Kibana, Rally, Active Directory</dd>
+        </dl>
+        <nav aria-labelledby="toc">
+          <h2 id="toc">On this page</h2>
+          <ol>
+            <li><a href="#situation">The situation</a></li>
+            <li><a href="#speed">Speed: measure, then tune</a></li>
+            <li><a href="#stability">Stability and running costs</a></li>
+            <li><a href="#logs">Central log management for a bank</a></li>
+            <li><a href="#support">Production support under pressure</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#differently">What I would do differently</a></li>
+            <li><a href="#for-you">What this means for your platform</a></li>
+          </ol>
+        </nav>
+      </div>
+    </aside>
+
+    <article class="article">
+      <h2 id="situation">The situation</h2>
+      <p>
+        Elasticsearch is easy to start and hard to run well. The same problems kept coming back:
+        indexing that could not keep up, reindexing that took days, clusters with too many shards,
+        nodes dropping out under load, data that did not match its mapping – and logs that needed
+        one secure, searchable place that the people responsible could actually use.
+      </p>
+      <p>
+        I worked on these problems from three sides: as a support engineer at Elastic, as a consultant
+        tuning customer clusters, and as an engineer building and optimising platforms on contract.
+      </p>
+
+      <h2 id="speed">Speed: measure, then tune</h2>
+      <p>
+        Before changing anything I wrote an automated performance test with the Rally benchmarking
+        framework. It set the baseline and ran again after every optimisation stage, so each change
+        was judged by numbers, not by feel.
+      </p>
+      <ul>
+        <li><strong>Indexing:</strong> moving to bulk indexing raised throughput from 20 to nearly 1,800 operations per second.</li>
+        <li><strong>Reindexing:</strong> a full reindex went from 3 days to a few hours.</li>
+        <li><strong>Search:</strong> querying boolean flags instead of comparing integer values, and querying fewer fields, cut search latency by 20%.</li>
+      </ul>
+
+      <h2 id="stability">Stability and running costs</h2>
+      <p>
+        As a consultant I improved the performance and stability of customer clusters:
+      </p>
+      <ul>
+        <li>Mapping and query optimisation, and sharding changes.</li>
+        <li>Deployment sizing recommendations.</li>
+        <li>Hot-warm architecture, so recent data sits on fast nodes and older data on cheaper ones.</li>
+        <li>Automated data purge with index lifecycle management (ILM) and snapshots with snapshot lifecycle management (SLM).</li>
+      </ul>
+      <p>Customers achieved significant reductions in operational costs as a result.</p>
+
+      <h2 id="logs">Central log management for a bank</h2>
+      <p>
+        For a Czech bank (name under NDA) I built a central log management solution handling
+        gigabytes of logs a day.
+      </p>
+      <ul>
+        <li><strong>Ingest:</strong> pipelines with Beats and Logstash.</li>
+        <li><strong>Access:</strong> role-based access with role mapping to Active Directory groups, so each team sees what it should and nothing else.</li>
+        <li><strong>Visibility:</strong> dashboards and visualisations in Kibana.</li>
+        <li><strong>Operations:</strong> Elasticsearch management and administration.</li>
+      </ul>
+      <h3>Teaching the people who use it</h3>
+      <p>
+        I trained the bank's internal and external users in Kibana: one-to-one video sessions with
+        team leads, walking through the dashboards I had prepared and how to use them in their daily work.
+      </p>
+
+      <h2 id="support">Production support under pressure</h2>
+      <p>
+        For three years I was a Support Engineer at Elastic, helping customers and prospects with every
+        part of the stack – Elasticsearch, Kibana, Logstash and Beats – including production outages
+        handled live with the customer on a video call. Typical cases:
+      </p>
+      <ul>
+        <li>Authentication and authorisation problems.</li>
+        <li>Ingestion failures, mostly data that did not match its mapping.</li>
+        <li>Oversharding.</li>
+        <li>Nodes disconnecting because they were overloaded.</li>
+      </ul>
+      <p>
+        I also proposed improvements to Elastic products; several of them were implemented. Since then I
+        have kept working with the technology: an Elasticsearch product search backend in Java at
+        Conrad Electronic, and OpenSearch as the event store of an e-commerce fulfilment centre.
+      </p>
+
+      <h2 id="results">Results</h2>
+      <ul>
+        <li>Indexing throughput from 20 to nearly 1,800 operations per second.</li>
+        <li>Full reindex from 3 days to a few hours; search latency down by 20%.</li>
+        <li>Significant operational cost reductions for consulting customers.</li>
+        <li>A bank's logs – gigabytes a day – in one place, with access tied to Active Directory groups.</li>
+        <li>Production outages handled live with customers, and product improvements adopted by Elastic.</li>
+      </ul>
+
+      <h2 id="differently">What I would do differently</h2>
+      <p class="note">
+        The Kibana training covered using the dashboards I had prepared, not building new ones. Team leads
+        could read their data, but every new view came back to me. Next time I would teach them to build
+        their own visualisations and metrics, so the platform keeps growing after the handover.
+      </p>
+
+      <h2 id="for-you">What this means for your platform</h2>
+      <ul>
+        <li>Measure before you tune: a benchmark baseline turns opinions into numbers.</li>
+        <li>Fix the data model, the queries and the shard layout before adding hardware.</li>
+        <li>Automate the data lifecycle, so storage costs do not creep up.</li>
+        <li>Tie access to your directory groups from day one.</li>
+        <li>Hand over to people who can build on the platform, not only read it.</li>
+      </ul>
+    </article>
+  </div>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Marek Duciuc – AI enablement for e-commerce and logistics operations. Open to new full-time contracts in EMEA and one-day AI workshops.</p>
+    <ul class="links">
+      <li><a href="/">CV</a></li>
+      <li><a href="/case-studies/">All case studies</a></li>
+      <li><a href="mailto:marek.duciuc@gmail.com">marek.duciuc@gmail.com</a></li>
+      <li><a href="tel:+420734638943">+420 734 638 943</a></li>
+      <li><a href="https://www.linkedin.com/in/marekduciuc">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
