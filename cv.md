@@ -57,7 +57,7 @@ Management of day-to-day business operations of an e-shop fulfilment centre.
 - Introduced OpenSearch as a central event store processing tens of thousands of events daily — orders, goods movements, sales, picker walking distance, packaging consumption and external data — enabling operational statistics and AI-supported decision making
 - Identified a correlation between weather and brick-and-mortar footfall (moderately poor weather increased in-store purchasing, severe weather reduced it) and used it as an input for stock planning
 - Automated supplier sourcing with Claude Code — the agent identified qualifying vendors and issued RFQs against my parameters (dates, technical specifications, additional services such as installation)
-- Trained a team of ~10 colleagues in the effective use of Claude Cowork
+- Trained a team of ~10 colleagues in the effective use of Claude Code
 
 #### Process and warehouse optimisation
 
@@ -229,7 +229,7 @@ Senior support engineer on the Pricefx project.
 - **Elasticsearch / OpenSearch — Security:** RBAC, role mapping via Active Directory, authentication & authorisation
 - **Elasticsearch / OpenSearch — Performance:** Rally benchmarking
 - **DevOps & tooling:** Docker, Kubernetes, GitLab pipelines, Ansible, SonarQube, Grafana (metrics & traces), GCP Datastore, Google Apps Script, Jira (incl. REST API), Confluence, Jitbit
-- **AI:** Claude Code, Claude Cowork, agentic workflows and automation, prompt engineering, LLM integration, AI-assisted development, internal AI enablement and training
+- **AI:** Claude Code, agentic workflows and automation, prompt engineering, LLM integration, AI-assisted development, internal AI enablement and training
 - **Leadership & business:** Team leading (up to 40 people), mentoring, people management, negotiation with partners, procurement, Agile adoption, technical training, WMS implementation, ABC analysis, KPI monitoring, operational analytics
 
 ## Languages
